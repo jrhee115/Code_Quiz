@@ -25,15 +25,29 @@
           <!-- Quiz starter -->
           
           <div id="quiz">
-            <div id="quizBod">
               <h3 class="catPhrase">Gotta catch 'em all!</h3>
               <h4 class="quiz link"> Click start to take the quiz</h4>
-            </div>
           </div>
-          <button onclick="start()">Start</button>
-          <h5><button onclick="score()"> Score</button></h5>
+          <div id="quizbody">
+            <div id="question">Questions</div>
+            <div id="A">A</div>
+            <div id="B">B</div>
+            <div id="C">C</div>
+            <div id="D">D</div>
+            <a class="btn btn-primary btn-lg" id="start" href="#" role="button">Start</a>
+        </div>
+        <div>
+          <h5 id ="score"> Score = </h5>
+        </div>
+        <div>
+          <h6 id="timer"> Timer = </h6>
+        </div>
+        <div id="results"></div>
         </article>
       </div>
-      <script src="./script.js"></script>
+
+      <script src="script.js"></script>
+      <script src="questions.js"></script>
+    
     </body>
     </html>
