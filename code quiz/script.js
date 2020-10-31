@@ -30,6 +30,7 @@ var questions = [{
     answer: "All of the above"
 }
 ]
+
 //variables for score and time
 var score = 0;
 var currentQuestion = -1;
@@ -37,7 +38,7 @@ var timeRemaining = 0;
 var timer;
 
 //Once user clicks start, timer begins
-function start (){
+function start(){
 //Gave user 100 sec
     timeRemaining = 100;
     document.getElementById("timeRemaining").innerHTML = timeRemaining;
@@ -53,3 +54,73 @@ function start (){
 
     next();
 }
+
+//stop timer at end of quiz
+function endquiz(){
+    clearInterval(timeRemaining);
+    
+    var htmlString = "<h6> End of Quiz </h6>"
+    htmlString += "<h7> Your score is + 'score' </h7>"
+    htmlString += "<input type='text' id='name' placeholder='First name'></input>"
+    htmlString += "<button onclick='setScore()'>Place your score</button>"
+
+    document.getElementById("quizbod").innerHTML = htmlString;
+}
+
+//Storing on local storage
+function scoreList() {
+    localStorage.setItem("highscore", score);
+    localStorage.setItem("usersname", document.getElementById('name').value);
+    scoreList();
+}
+
+function getScore(){
+    var quizContent = 
+    '<h8>' + localStorage.getItem("username") + '</h8>'
+    '<h9>' + localStorage.getItem("highscore")  + '</h9>'
+
+    <button onclick="clearScore()">Clear</button><button onclick="resetGame()">Retry</button>;
+
+    document.getElementById("quizbod").innerhtml = quizContent; 
+}
+
+function clearScore() {
+    localStorage.setItem("highscore", "");
+    localStorage.setItem("username", ""); 
+
+    resetScore();
+}
+function resetGame() {
+    clearInterval(timer);
+    score = 0;
+    currentQuestion = -1;
+    timeRemaining = 0
+    timer = null
+
+    document.getElementById("timeRemaining").innerHTML = timeRemaining;
+
+    var quizbody = 
+    toHtmlString += <h1> JavaScript Quiz </h1>
+    toHtmlString += <h3> Click to play </h3>
+    <button onclick="start()">Start</button>; 
+
+    document.getElementById("quizbod").innerHTML = quizbody;
+}
+
+function wrong() {
+    timeLeft -=15;
+    next();
+}
+
+function correct() {
+    score +=20; 
+    next();
+}
+function next() {
+    currentQuestion++;
+    if(currentQuestion  > questions.length -1) {
+        endGame();
+            return;
+    }
+}
+
