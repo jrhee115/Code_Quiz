@@ -49,7 +49,7 @@ function storeScores() {
 quizForm.addEventListener("submit", function(event) {
   event.preventDefault();
 
-  var scoreText = scoreInput.value.trim();
+  var scoreText = scoreInput.val.trim();
 
   // Return from function early if submitted scoreText is blank
   if (scoreText === "") {
