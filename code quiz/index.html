@@ -14,7 +14,6 @@
       <div id="main">
 
         <!-- Quiz Header -->
-
         <h1>Pokemon Quiz</h1>
         <h2>Do you know your Pokemon?</h2>
       </div>
@@ -23,7 +22,6 @@
           <img class="decPoke" src="image/pokemonimage1.jpeg" alt="Pokemon"/>
           
           <!-- Quiz starter -->
-          
           <div id="quiz">
               <h3 class="catPhrase">Gotta catch 'em all!</h3>
               <h4 class="quiz link"> Click start to take the quiz</h4>
@@ -37,13 +35,23 @@
             <a class="btn btn-primary btn-lg" id="start" href="#" role="button">Start</a>
         </div>
         <div>
-          <a class="btn btn-primary btn-lg" id="score" href="#" role="button">Score</a>
+          <a class="btn btn-primary btn-lg" id="timer" href="#" role="button">Time</a>
         </div>
         <div>
-          <a class="btn btn-primary btn-lg" id="timer" href="#" role="button">Time</a>
+          <a class="btn btn-primary btn-lg" id="score" href="#" role="button">Score</a>
         </div>
         <div id="results"></div>
         </article>
+      </div>
+
+      <!--Highscore-->
+      <div class="quiz">
+        <form id="quiz-form" method="POST">
+          <input type="quiz" placeholder="Add initials to record score" name="initialext" id="initialext"/>
+        <!-- <button id="clear">Clear Results</button> -->
+        </form>
+        <p>HighScores: <span id="score-count">0</span></p>
+        <ul id="score-list"></ul>
       </div>
 
       <script src="assets/JS/script.js"></script>

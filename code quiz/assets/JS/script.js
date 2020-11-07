@@ -8,7 +8,7 @@ var startQuiz = document.getElementById("start");
 
 //variables
 var score = 0;
-var secondsLeft = 75;
+var secondsLeft = 90;
 var currentQuestionIndex = 0;
 // Once user clicks it will become a string ""
 function goToNextQuestion(userClick) {
@@ -59,13 +59,11 @@ function getNewQuestion(questionIndex) {
   
   var option2 = question.choices[1];
   var answerEl2 = document.getElementById("B");
-  answerEl2.innerText = option2;
- 
+  answerEl2.innerText = option2
 
   var option3 = question.choices[2];
   var answerEl3 = document.getElementById("C");
   answerEl3.innerText = option3;
-  
 
   var option4 = question.choices[3];
   var answerEl4 = document.getElementById("D");
@@ -76,14 +74,21 @@ function getNewQuestion(questionIndex) {
   document.getElementById("B").innerText = choice2;
   document.getElementById("C").innerText = choice3;
   document.getElementById("D").innerText = choice4;
-
-
 }
-// //adding scores
-// function scoreKeeper(){
-//   document.getElementById("score").innerHTML = count++;
 
-// }
-// scoreKeeper();
-localStorage.setItem("score", 0)
-localStorage.getItem("score")
+//function to set up timer, timer should decrease every sec
+function setTime() {
+  var timeInterval = setInterval(function(){
+    secondsLeft--;
+    timer.textContent = "Time " + secondsLeft
+    if (secondsLeft === 0) {
+      clearInterval(timeInterval);
+      sendMessage();
+    }
+  },1000)
+
+  function sendMessage(){
+    timer.textContent = "You're out of time!"
+  }
+  
+}
