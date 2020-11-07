@@ -1,27 +1,27 @@
 var questions = [{
-    title: "Captain Holt has a dog name?",
-    choices: ["Cheddar", "Cheese", "Buttercup", "Pepper"],
-    answer: "Cheddar"
+    title: "Which one is the starter Pokemon in generation 1?",
+    choices: ["Charmander", "Pidgey", "Butterfree", "Jigglypuff"],
+    answer: "Charmander"
 },
 {
-    title: "Where did Terry onle live when pursuing a college education? ",
-    choices: ["Korea", "Australia", "Japan", "Sweden"],
-    answer: "Japan"
+    title: "What anime does Pikachu represent?",
+    choices: ["Cat", "Horse", "Dog", "Mouse"],
+    answer: "Mouse"
 },
 {
-    title: "Who is the jokester of the precinct?",
-    choices: ["Gina", "Jake", "Rosa", "Boyle"],
-    answer: "Jake"
+    title: "What type of Pokemon can beat electric type?",
+    choices: ["Electic", "Water", "Ground", "Fire"],
+    answer: "Ground"
 },
 {
-    title: "What is Jake's favorite movie?",
-    choices: ["Rocky", "The Terminator", "Die Hard", "Top Gun"],
-    answer: "Die Hard"
+    title: "How many badges do you need to advance to the Elite Four?",
+    choices: ["5", "7", "8", "9"],
+    answer: "7"
 },
 {
-    title: "What number is the precinct in the show?",
-    choices: ["9th", "30th", "78th", "99th"],
-    answer: "99th"
+    title: "In generation 1, which organization steals Pokemon?",
+    choices: ["Team Skull", "Team Dynamite", "Team Yell", "Team Rocket"],
+    answer: "Team Rocket"
 },
 ];
 //checking questions
