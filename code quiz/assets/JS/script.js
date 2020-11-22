@@ -8,7 +8,6 @@ var startQuiz = document.getElementById("start");
 
 //variables
 var score = 0;
-var secondsLeft = 90;
 var currentQuestionIndex = 0;
 // Once user clicks it will become a string ""
 function goToNextQuestion(userClick) {
@@ -77,18 +76,18 @@ function getNewQuestion(questionIndex) {
 }
 
 //function to set up timer, timer should decrease every sec
-function setTime() {
-  var timeInterval = setInterval(function(){
-    secondsLeft--;
-    timer.textContent = "Time " + secondsLeft
-    if (secondsLeft === 0) {
-      clearInterval(timeInterval);
-      sendMessage();
-    }
-  },1000)
+var timeRemaining = 0;
 
-  function sendMessage(){
-    timer.textContent = "You're out of time!"
-  }
-  
+function setTime() {
+  timeRemaining = 90;
+  $("#count").text(timeRemaining);
+
+  countdown = setInterval(function (){
+    timeRemaining --;
+    $("#count").text(timeRemaining);
+
+    if (timeRemaining <= 0) {
+      clearInterval(countdown);
+    }
+  }, 1000);
 }
