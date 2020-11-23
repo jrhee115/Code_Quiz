@@ -29,7 +29,7 @@ function nextQuestion() {
   var questionEl = document.getElementById("quizQuestion");
   questionEl.textContent = questions[index].title;
 
-  questions[index].answers.forEach(function (answer, i) {
+  questions[index].choices.forEach(function (answer, i) {
     var buttonEl = document.createElement("button");
     buttonEl.classList.add("btn", "btn-outline-secondary");
     buttonEl.setAttribute("value", answer);
@@ -43,7 +43,7 @@ function nextQuestion() {
 function startTimer() {
   var timerInterval = setInterval(function () {
     secondsLeft--;
-    timeEL.textContent = "Timer: " + secondsLeft
+    timeEL.textContent = "Timer: " + secondsLeft;
 
     if (secondsLeft <= 0) {
       clearInterval(timerInterval);
@@ -54,7 +54,7 @@ function startTimer() {
 
 //Correct or Wrong Answer
 function selectAnswer() {
-  if (this.value === questions[index].answer) {
+  if (this.value === questions[index].choices) {
     var correctAn = setInterval(correctQuestion, 50);
     function correctQuestion() {
       correctAnswer.classList.remove("hide");
@@ -66,14 +66,14 @@ function selectAnswer() {
   } else {
     secondsLeft -= 10;
     if (secondsLeft <= 0) {
-      endQuiz();
-      startTimer();
+        endQuiz();
+        startTimer();
     } else {
-      var wrongAn = setInterval(incorrectQuestion, 50)
-      function incorrectQuestion() {
-        correctAnswer.classList.remove("hide");
-        clearInterval(wrongAn);
-      };
+        var wrongAn = setInterval(incorrectQuestion, 50)
+        function incorrectQuestion() {
+          correctAnswer.classList.remove("hide");
+          clearInterval(wrongAn);
+        };
       index += 1
       nextQuestion();
     }
