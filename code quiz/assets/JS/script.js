@@ -5,9 +5,14 @@ var startButton = document.getElementById("start-btn");
 var topRow = document.getElementById("top-row");
 var qContainer = document.getElementById("question-container");
 var gameoverContainer = document.getElementById("gameOver-container");
-var answerQ = document.getElementById("answer-button");
+var answerQ = document.getElementById("answer-buttons");
 var reStart = document.getElementById("restart-btn");
 var secondsLeft = 90;
+var usersPoints = 0;
+var index = 0;
+
+//buttons
+startButton.addEventListener("click", startQuiz);
 
 //Quiz Starter
 function startQuiz(){
@@ -15,6 +20,22 @@ function startQuiz(){
   qContainer.classList.remove("hide");
   nextQuestion();
   startTimer();
+}
+
+//Questions
+function nextQuestion(){
+  answerQ.innerHTML = "";
+  var questionEl = document.getElementById("quizQuestion");
+  questionEl.textContent = questions[index].title;
+  
+  questions[index].answers.forEach(function(answer, i){
+    var buttonEl = document.createElement("button");
+    buttonEl.classList.add("btn", "btn-outline-secondary");
+    buttonEl.setAttribute("value", answer);
+    buttonEl.textContent = answer;
+    buttonEl.onclick = selectAnswer;
+    answerQ.appendChild(buttonEl);
+  })
 }
 
 //Timer
@@ -29,24 +50,6 @@ function startTimer() {
     }
   }, 1000);
 }
-
-//Questions
-function nextQuestion(){
-  answerQ.innerHTML = "";
-  var quizQuestion = document.getElementById("quizQuestion");
-  quizQuestion.textContent = questions[index].title;
-  
-  questions[index].answer.forEach(function(answer, i){
-    var buttonEl = document.createElement("button");
-    buttonEl.classList.add("btn", "btn-outline-secondary");
-    buttonEl.setAttribute("value", answer);
-    buttonEl.textContent = answer;
-    buttonEl.onclick = selectAnswer;
-    answerQ.appendChild(buttonEl);
-  })
-}
-
-
 
 var questions = [{
   title: "Which one is the starter Pokemon in generation 1?",
