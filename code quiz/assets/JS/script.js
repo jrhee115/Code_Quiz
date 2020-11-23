@@ -1,93 +1,76 @@
 //variables
-var questQuiz = document.getElementById("quiz");
-var questSubmit = document.getElementById("results");
-var score = document.getElementById("score");
-var timer = document.getElementById("timer");
+var timeEL = document.getElementById("timer");
+var startContainer = document.getElementById("start-container");
+var startButton = document.getElementById("start-btn");
+var topRow = document.getElementById("top-row");
+var qContainer = document.getElementById("question-container");
+var gameoverContainer = document.getElementById("gameOver-container");
+var answerQ = document.getElementById("answer-button");
+var reStart = document.getElementById("restart-btn");
+var secondsLeft = 90;
 
-var startQuiz = document.getElementById("start");
-
-//variables
-var score = 0;
-var currentQuestionIndex = 0;
-// Once user clicks it will become a string ""
-function goToNextQuestion(userClick) {
-  var correctAns = questions[currentQuestionIndex].answer;
-
-  if (userClick === correctAns) {
-    console.log("Nice!");
-    score++;
-  }
-  else {
-    console.log("Try again!");
-  }
-  currentQuestionIndex++;
-  getNewQuestion(currentQuestionIndex);
-
-
-}
-//setting up a way to click the correct answer
-function answerClickSetUp() {
-  var a = document.getElementById("A");
-  var b = document.getElementById("B");
-  var c = document.getElementById("C");
-  var d = document.getElementById("D");
-
-  a.addEventListener("click", function () { goToNextQuestion(a.innerText); });
-  b.addEventListener("click", function () { goToNextQuestion(b.innerText); });
-  c.addEventListener("click", function () { goToNextQuestion(c.innerText); });
-  d.addEventListener("click", function () { goToNextQuestion(d.innerText); });
-}
-answerClickSetUp();
-
-startQuiz.addEventListener("click", function () {
-  getNewQuestion(currentQuestionIndex);
-});
-//after question was answered it will change to the next
-var currentQuestion;
-function getNewQuestion(questionIndex) {
-  var question = questions[questionIndex];
-  currentQuestion = question;
-  var title = question.title;
-
-  var questionEl = document.getElementById("question");
-  questionEl.innerText = title;
-
-  var option1 = question.choices[0];
-  var answerEl1 = document.getElementById("A");
-  answerEl1.innerText = option1;
-  
-  var option2 = question.choices[1];
-  var answerEl2 = document.getElementById("B");
-  answerEl2.innerText = option2
-
-  var option3 = question.choices[2];
-  var answerEl3 = document.getElementById("C");
-  answerEl3.innerText = option3;
-
-  var option4 = question.choices[3];
-  var answerEl4 = document.getElementById("D");
-  answerEl4.innerText = option4;
- 
-  document.getElementById("question").innerText = title;
-  document.getElementById("A").innerText = choice1;
-  document.getElementById("B").innerText = choice2;
-  document.getElementById("C").innerText = choice3;
-  document.getElementById("D").innerText = choice4;
+//Quiz Starter
+function startQuiz(){
+  startContainer.classList.add("hide");
+  qContainer.classList.remove("hide");
+  nextQuestion();
+  startTimer();
 }
 
-//function to set up timer, timer should decrease every sec
-var timeRemaining = 0;
+//Timer
+function startTimer() {
+  var timerInterval = setInterval(function () {
+    secondsLeft--;
+    timeEL.textContent = "Timer: " + secondsLeft
 
-function setTime() {
-  timeRemaining = 90;
-  $("#count").text(timeRemaining);
-
-  countdown = setInterval(function (){
-    timeRemaining --;
-    $("#count").text(timeRemaining);
-
-    if (timeRemaining <= 0) {
-      clearInterval(countdown);
+    if (secondsLeft <= 0) {
+      clearInterval(timerInterval);
+      endQuiz();
     }
   }, 1000);
 }
+
+//Questions
+function nextQuestion(){
+  answerQ.innerHTML = "";
+  var quizQuestion = document.getElementById("quizQuestion");
+  quizQuestion.textContent = questions[index].title;
+  
+  questions[index].answer.forEach(function(answer, i){
+    var buttonEl = document.createElement("button");
+    buttonEl.classList.add("btn", "btn-outline-secondary");
+    buttonEl.setAttribute("value", answer);
+    buttonEl.textContent = answer;
+    buttonEl.onclick = selectAnswer;
+    answerQ.appendChild(buttonEl);
+  })
+}
+
+
+
+var questions = [{
+  title: "Which one is the starter Pokemon in generation 1?",
+  choices: ["Charmander", "Pidgey", "Butterfree", "Jigglypuff"],
+  answer: "Charmander"
+},
+{
+  title: "What anime does Pikachu represent?",
+  choices: ["Cat", "Horse", "Dog", "Mouse"],
+  answer: "Mouse"
+},
+{
+  title: "What type of Pokemon can beat electric type?",
+  choices: ["Electic", "Water", "Ground", "Fire"],
+  answer: "Ground"
+},
+{
+  title: "How many badges do you need to advance to the Elite Four?",
+  choices: ["5", "7", "8", "9"],
+  answer: "7"
+},
+{
+  title: "In generation 1, which organization steals Pokemon?",
+  choices: ["Team Skull", "Team Dynamite", "Team Yell", "Team Rocket"],
+  answer: "Team Rocket"
+}
+];

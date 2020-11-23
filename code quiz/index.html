@@ -61,21 +61,37 @@
         </div>
         <img src="./image/pokemonimage1.jpeg" alt="pokemonphoto" class="img-thumbnail">
         
+        <!--Game results-->
+        <div class="gameOver-container hide" id="gameOver-container">
+          <div class="row game-results">
+            <h2>Finish!</h2>
+          </div>
+          <div class="row game-results">
+            <h4 id="totalScore"></h4>
+          </div>
+          <div class="row input-group mb-3 end-game-submit">
+            <input id="initials" type="text" class="form-control" placeholder="Player Initials" aria-label="Player Initials" aria-describedby="button-addon2">
+            <div class="input-group-append">
+                <button class="btn submit-score-btn btn-outline-success" type="button" id="button-addon2">Submit Score</button>
+            </div>
+        </div>
+        
+        <!-- Highscore -->
+      <div class="score-container hide" id="score-container">
+        <div class ="row score-results">
+          <h2>Your score is: </h2>
+        </div>
+        <div>
+          <ol id="score-list"></ol>
+        </div>
+        <div class="row start">
+          <button class="btn btn-outline-success" id="clear-scores">Clear Scores</button>
+          <button class="btn btn-outline-success" id="restart-btn">Try Again</button>
+        </div>
       </div>
-
-      <!-- Highscore -->
-      <div class="quiz">
-        <form id="quiz-form" method="POST">
-          <input type="quiz" placeholder="Add initials to record score" name="initialext" id="initialext"/>
-        <!-- <button id="clear">Clear Results</button> -->
-        </form>
-        <p>HighScores: <span id="score-count">0</span></p>
-        <ul id="score-list"></ul>
-      </div>
-
+      
     <script src="assets/JS/script.js"></script>
     <script src="assets/JS/questions.js"></script>
-    <script src="assets/JS/scoring.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
