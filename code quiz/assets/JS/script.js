@@ -56,8 +56,8 @@ function startTimer() {
 //Correct or Wrong Answer
 function selectAnswer() {
   if (this.value === questions[index].choices) {
-    var correctAn = setInterval(correctQuestion, 50);
-    function correctQuestion() {
+    var correctAn = setInterval(rightAnswer, 50);
+    function rightAnswer() {
       correctAnswer.classList.remove("hide");
       clearInterval(correctAn);
     };
@@ -70,8 +70,8 @@ function selectAnswer() {
           endQuiz();
           startTimer();
       } else {
-          var wrongAn = setInterval(incorrectQuestion, 50)
-            function incorrectQuestion() {
+          var wrongAn = setInterval(incorrectAnswer, 50)
+            function incorrectAnswer() {
               correctAnswer.classList.remove("hide");
               clearInterval(wrongAn);
             };
