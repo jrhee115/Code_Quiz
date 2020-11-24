@@ -8,7 +8,8 @@ var gameoverContainer = document.getElementById("gameOver-container");
 var answerQ = document.getElementById("answer-buttons");
 var reStart = document.getElementById("restart-btn");
 var correctAnswer = document.getElementById("answer-reveal");
-var secondsLeft = 90;
+var scoreContainer = document.getElementById("score-container");
+var secondsLeft = 60;
 var usersPoints = 0;
 var index = 0;
 
@@ -65,29 +66,42 @@ function selectAnswer() {
     nextQuestion();
   } else {
     secondsLeft -= 10;
-    if (secondsLeft <= 0) {
-        endQuiz();
-        startTimer();
-    } else {
-        var wrongAn = setInterval(incorrectQuestion, 50)
-        function incorrectQuestion() {
-          correctAnswer.classList.remove("hide");
-          clearInterval(wrongAn);
-        };
-      index += 1
-      nextQuestion();
+      if (secondsLeft <= 0) {
+          endQuiz();
+          startTimer();
+      } else {
+          var wrongAn = setInterval(incorrectQuestion, 50)
+            function incorrectQuestion() {
+              correctAnswer.classList.remove("hide");
+              clearInterval(wrongAn);
+            };
+          index += 1
+          nextQuestion();
     }
   }
 }
-
-
+//end game
+function endQuiz(){
+  qContainer.classList.add("hide");
+  gameoverContainer.classList.remove("hide");
+  usertotalScore = document.getElementById("totalScore");
+  usertotalScore.innerHTML = "Your total score is: " + usersPoints;
+};
+//highscore
+function finalscoreContainer(){
+  gameoverContainer.classList.add("hide");
+  scoreContainer.classList.remove("hide");
+  startContainer.classList.add("hide");
+  qContainer.classList.add("hide");
+}
+//questions
 var questions = [{
   title: "Which one is the starter Pokemon in generation 1?",
   choices: ["Charmander", "Pidgey", "Butterfree", "Jigglypuff"],
   answer: "Charmander"
 },
 {
-  title: "What anime does Pikachu represent?",
+  title: "What animal does Pikachu represent?",
   choices: ["Cat", "Horse", "Dog", "Mouse"],
   answer: "Mouse"
 },
@@ -105,5 +119,25 @@ var questions = [{
   title: "In generation 1, which organization steals Pokemon?",
   choices: ["Team Skull", "Team Dynamite", "Team Yell", "Team Rocket"],
   answer: "Team Rocket"
+},
+{
+  title: "Whats the main protagonist name?",
+  choices: ["Misty", "Chad", "Ash", "Brock"],
+  answer: "Ash"
+},
+{
+  title: "which pokemon is a flying type?",
+  choices: ["Staryu", "Jinx", "Geodude", "Spearow"],
+  answer: "Spearow"
+},
+{
+  title: "which pokemon is a ground type?",
+  choices: ["Sandslash", "Nidoking", "Gengar", "Charizard"],
+  answer: "Sandslash"
+},
+{
+  title: "which pokemon is lengendary?",
+  choices: ["Pikachu", "Mew", "Blastoise", "Dragonite"],
+  answer: "Mew"
 }
 ];
