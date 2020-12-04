@@ -121,23 +121,8 @@ var questions = [{
   answer: "Team Rocket"
 },
 {
-  title: "Whats the main protagonist name?",
-  choices: ["Misty", "Chad", "Ash", "Brock"],
-  answer: "Ash"
-},
-{
   title: "which pokemon is a flying type?",
   choices: ["Staryu", "Jinx", "Geodude", "Spearow"],
   answer: "Spearow"
-},
-{
-  title: "which pokemon is a ground type?",
-  choices: ["Sandslash", "Nidoking", "Gengar", "Charizard"],
-  answer: "Sandslash"
-},
-{
-  title: "which pokemon is lengendary?",
-  choices: ["Pikachu", "Mew", "Blastoise", "Dragonite"],
-  answer: "Mew"
 }
 ];
