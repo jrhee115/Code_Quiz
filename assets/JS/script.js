@@ -9,7 +9,6 @@ var answerQ = document.getElementById("answer-buttons");
 var reStart = document.getElementById("restart-btn");
 var correctAnswer = document.getElementById("answer-reveal");
 var scoreContainer = document.getElementById("score-container");
-var secondsLeft = 60;
 var usersPoints = 0;
 var index = 0;
 
@@ -41,11 +40,15 @@ function nextQuestion() {
 }
 
 //Timer
+var secondsLeft = 0;
+
 function startTimer() {
+  secondsLeft = 60;
+  $("#count").text(secondsLeft);
+
   var timerInterval = setInterval(function () {
     secondsLeft--;
-    timeEL.textContent = "Timer: " + secondsLeft;
-
+    ("#count").text(secondsLeft);
     if (secondsLeft <= 0) {
       clearInterval(timerInterval);
       endQuiz();
